@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Dry & Wet Food",
+    "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1.jpeg-DYf9ly1egS2LKVZackFyiMCrzBkufK.png",
+    "description": "Качественные корма для ваших питомцев"
+  },
+  {
+    "name": "Litter Boxes & Litter Trays",
+    "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2.jpeg-1adzgY3qWmwMDyM23JN30lH1pZ1trB.png",
+    "description": "Все необходимое для туалетов"
+  },
+  {
+    "name": "Baskets & Beds",
+    "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3.jpeg-ZIVxZhYBzC8Xck9SD80X44kIHzmORF.png",
+    "description": "Качественные лежаки и подстилки"
+  },
+  {
+    "name": "Toys",
+    "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/4.jpeg-la3EbFiljaurDVx6jedw0QYOOfAz9w.png",
+    "description": "Игрушки для ваших питомцев"
+  },
+  {
+    "name": "Care & Grooming",
+    "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/5.jpeg-pSmYVVIkvrf73zujNiwn2Df195uGH5.png",
+    "description": "Товары для ухода за шерстью и внешним видом питомцев"
+  },
+  {
+    "name": "Snacks & Supplements",
+    "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/6.jpeg-tY4w1MtyC5ByVulZDs5mH1G60tIZ27.png",
+    "description": "Снеки и вкусняшки"
+  },
+  {
+    "name": "Runs & Fencing",
+    "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/7.jpeg-ThjpfDlBKJgN7ZjWzRTmBuTxrKRUQV.png",
+    "description": "Товары для игр"
+  },
+  {
+    "name": "Trees & Scratching",
+    "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/8.jpeg-GJ71mGeRogzyIEDPpOk8ncVZDr5gUA.png",
+    "description": "Товары для котов"
+  }
+]
