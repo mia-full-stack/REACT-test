@@ -1,10 +1,11 @@
 /** @jsxImportSource @emotion/react */
-import { useCallback } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 // import { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 
 import Container from "../layouts/Container/Container";
+import Breadcrumbs from "../../shared/components/Breadcrumbs/Breadcrumbs";
 import SectionTitle from "../../shared/components/SectionTitle/SectionTitle";
 import Loader from "../../shared/components/Loader/Loader";
 import LoadingError from "../../shared/components/LoadingError/LoadingError";
@@ -25,12 +26,31 @@ import { popularProductsStyle, productListStyle, viewAllButtonStyle } from "./st
 
 const CategoriesOne = ({ limit, categoryId = 1 }) => {
 
+
     const requestWithId = useCallback(() => getCategoriesById(categoryId), [categoryId]);
 
     const { data: apiResponse, loading, error: fetchError } = useFetch({
         request: requestWithId,
         initialData: { data: null, error: null },
     });
+
+
+
+
+// вытягиваю название категории для Breadcrumbs
+    const [categoryTitle, setCategoryTitle] = useState('');
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                setCategoryTitle(apiResponse?.category?.title);
+            }
+            catch (error) {
+                setCategoryTitle(error.message);
+            }
+        };
+        fetchData();
+    }, [apiResponse]);
+
 
     const dispatch = useDispatch();
 
@@ -47,11 +67,14 @@ const CategoriesOne = ({ limit, categoryId = 1 }) => {
     const responseData = apiResponse?.data;
 
     // Извлекаем информацию о категории и товарах
-    const category = responseData?.category || {};
-    const products = responseData?.data || [];
-
+    // const category = responseData?.category || {};
+    // const products = responseData?.data || [];
+    
+    const { data = [], category = {} } = apiResponse;
     // Ограничиваем количество категорий, если передан limit
-    const displayedCategoriesOne = limit ? products.slice(0, limit) : products;
+    const displayedCategoriesOne = limit ? data.slice(0, limit) : data;
+    // console.log(apiResponse);
+
 
     // Создаем элементы карточек товаров
     const elements = Array.isArray(displayedCategoriesOne)
@@ -68,6 +91,12 @@ const CategoriesOne = ({ limit, categoryId = 1 }) => {
 
         <div css={popularProductsStyle}>
             <Container>
+            <Breadcrumbs
+                custom={[
+                    { name: "Categories", to: "/categories" },
+                    { name: categoryTitle, to: `/categories/${categoryId}` }
+                ]}
+            />
 
                 {/* <SectionTitle title="One category"></SectionTitle> */}
                 <SectionTitle title={category?.title || "One category"}></SectionTitle>

@@ -6,9 +6,14 @@ import CartPage from './CartPage/CartPage';
 import CategoryPage from './CategoryPage/CategoryPage';
 import CategoryOne from './CategoryOne/CategoryOne';
 import AllProductsPage from './AllProductsPage/AllProductsPage';
-import ProductItemPage from './ProductItemPage/ProductItemPage';
+// import ProductSinglePage from './ProductSinglePage/ProductSinglePage';
+
+import SingleProductPage from './ProductSinglePage/SingleProductPage';
+
 import SaleProductsPage from './SaleProductsPage/SaleProductsPage';
 import NotFoundPage from './NotFoundPage/NotFoundPage';
+
+
 
 const Navigation = () => {
     return (
@@ -16,11 +21,17 @@ const Navigation = () => {
             <Route path="/" element={<MainPage />} />
             <Route path="/categories" element={<CategoryPage />} />
             <Route path="/categories/:category" element={<CategoryOne />} />
-            {/* <Route path="/categories/:category/:subcategory" element={<CategoryOne />} /> */}
             <Route path="/allproducts" element={<AllProductsPage />} />
             <Route path="/allproducts/:category" element={<AllProductsPage />} />
             {/* <Route path="/allproducts/:category/:subcategory" element={<AllProductsPage />} /> */}
-            <Route path="/product" element={<ProductItemPage />} />
+
+            {/* <Route path="/products/:productId" element={<ProductSinglePage />} /> */}
+
+            <Route path="/products/:productId" element={<SingleProductPage />} />
+            <Route path='/categories/:categoryId/products/:productId' element={<SingleProductPage />} />
+            <Route path="/sales/:productId" element={<SingleProductPage />} />
+
+
             <Route path="/sales" element={<SaleProductsPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="*" element={<NotFoundPage />} />

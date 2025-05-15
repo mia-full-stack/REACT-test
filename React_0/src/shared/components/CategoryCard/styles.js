@@ -18,7 +18,12 @@ export const productCardImageStyle = css`
     ${imgResponsiveStyle}
     // max-width: 100%;
     // height: auto;
-`
+`;
+export const productLinkStyle = css`
+    text-decoration: none;
+    color: inherit; /* Сохраняет цвет текста родительского элемента */
+`;
+
 export const productCardTitleStyle = css`
     font-size: 24px;
     line-height: 1.5;

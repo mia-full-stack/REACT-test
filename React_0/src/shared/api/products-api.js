@@ -9,7 +9,7 @@ export const getAllProductsApi = requestDecorator(async () => {
 })
 
 export const getProductByIdApi = requestDecorator(async (id) => {
-    const { data } = await productsInstance.get(`/products/${id}`);
+    const { data } = await productsInstance.get(`/${id}`);
     return data;
 })
 

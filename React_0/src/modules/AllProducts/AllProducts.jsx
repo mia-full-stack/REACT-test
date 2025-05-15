@@ -1,11 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
+import { useFilters } from "../../shared/hooks/ProductsFilters";
 
 import Container from "../../modules/layouts/Container/Container";
 import SectionTitle from "../../shared/components/SectionTitle/SectionTitle";
+import Filter from "../../shared/components/Filter/Filter";
 import Loader from "../../shared/components/Loader/Loader";
 import LoadingError from "../../shared/components/LoadingError/LoadingError";
+import ProductsSector from "../../modules/ProductsSector/ProductsSector";
+// import { useSelector } from "react-redux";
 
 import ProductCard from "../../shared/components/ProductCard/ProductCard";
 
@@ -14,7 +18,7 @@ import { addToCart } from "../../redux/cart/cart-slice";
 
 import { getAllProductsApi } from "../../shared/api/products-api";
 
-import { popularProductsStyle, productListStyle } from "./styles";
+import { productListStyle, popularProductsStyle } from "./styles";
 
 const AllProducts = () => {
     const { data: products, loading, error } = useFetch({
@@ -22,6 +26,12 @@ const AllProducts = () => {
         initialData: [],
     });
 
+    const { filters, setFilters } = useFilters({
+        priceFrom: 0,
+        priceTo: Infinity,
+        discounted: false,
+        sortBy: 'default',
+    });
 
     const dispatch = useDispatch();
 
@@ -35,16 +45,28 @@ const AllProducts = () => {
 
 
     const elements = products?.map((item) => (
-        <ProductCard 
-        onAddProductToCart={onAddProductToCart}
-        key={item.id} {...item} />
+        <ProductCard
+            filters={filters}
+            onAddProductToCart={onAddProductToCart}
+            key={item.id} {...item} />
     ));
 
     return (
+
         <div css={popularProductsStyle}>
 
             <Container>
                 <SectionTitle title="All products"></SectionTitle>
+
+                <Filter
+                    filters={filters}
+                    onPriceChange={u => setFilters(u)}
+                    onToggleDiscounted={u => setFilters(u)}
+                    onSortChange={u => setFilters(u)}
+                />
+                {/* <ProductsSector
+                    filters={filters}
+                /> */}
 
                 <Loader loading={loading} />
                 {error && <LoadingError>{error}</LoadingError>}
@@ -57,7 +79,11 @@ const AllProducts = () => {
                 )}
 
             </Container>
+
+
         </div>
+
+
     );
 }
 export default AllProducts;

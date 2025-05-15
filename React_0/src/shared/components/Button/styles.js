@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-export const btnStyle = css`
+export const btn1Style = css`
     background-color: #0D50FF;
     cursor: pointer;
     padding: 16px 56px;

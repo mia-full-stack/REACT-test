@@ -6,10 +6,11 @@ import axios from "axios";
 
 // export default backendInstance;
 
-// export const categoriesInstance = axios.create({
-//     baseURL: "http://localhost:3333/categories"
-// });
+const backendInstance = axios.create({
+    baseURL: 'https://petshopbackend-cnrh.onrender.com'
+})
 
+export default backendInstance;
 
 
 export const productsInstance = axios.create({

@@ -15,6 +15,7 @@ color: ${color};
 
 &.active {
     border-bottom: 2px solid #282828;
+    color: #0D50FF;
     padding-bottom: 0.25rem;
 }
 

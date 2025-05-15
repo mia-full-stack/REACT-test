@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { imgResponsiveStyle } from "../../styles/mixins";
 
 export const productCardWrapperStyle = css`
-    max-width: 386px;
+    max-width: 316px;
     // padding: 45px 42px;
     border: 2px solid #00000026;
     border-radius: 10px;
@@ -18,6 +18,7 @@ export const productCardWrapperStyle = css`
 export const productCardImageWrapperStyle = css`
     text-align: center;
     margin-bottom: 15px;
+    
 `;
 
 export const productCardImageStyle = css`
@@ -26,6 +27,7 @@ export const productCardImageStyle = css`
     // height: auto;
     background-size: cover;
     background-position: center;
+    
 `;
 export const productCardTitleStyle = css`
     font-size: 20px;
@@ -33,7 +35,6 @@ export const productCardTitleStyle = css`
     display: flex;
     justify-content: left;
     margin: 0 32px;
-    margin-bottom: 10px;
     white-space: nowrap; /* Запрещает перенос текста на новую строку */
     overflow: hidden; /* Скрывает текст, который не помещается */
      text-overflow: ellipsis; /* Добавляет многоточие в конце обрезанного текста */
@@ -60,12 +61,22 @@ export const productCardActionsStyle = css`
     align-items: flex-end;
     margin-left: 35px;
     margin-right: 35px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    
 `;
+
+export const productLinkStyle = css`
+    text-decoration: none;
+    color: inherit; /* Сохраняет цвет текста родительского элемента */
+`;
+
 
 export const productCardActions = css`
     display: flex;
     justify-content: center;
-    margin: 0 32px 20px;
+    margin: 0 50px 20px;
+    position: absolute;
   /* Скрываем кнопку по умолчанию */
     opacity: 0;
     transform: translateY(20px);

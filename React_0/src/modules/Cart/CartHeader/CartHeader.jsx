@@ -1,20 +1,18 @@
+/** @jsxImportSource @emotion/react */
 import { memo } from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+// import Button from "../../../shared/components/Button/Button";
 
-import styles from "./styles";
+import { wrapperStyles, buttonStyles } from "./styles";
 
 const CartHeader = ({ onClearCart }) => {
     return (
-        <Box sx={styles.wrapper}>
-            <Typography variant="h5" gutterBottom>
-                Cart
-            </Typography>
-            <Button onClick={onClearCart} variant="text">
+        <div css={wrapperStyles}>
+            <button css={buttonStyles} onClick={onClearCart} variant="text">
                 Clear cart
-            </Button>
-        </Box>
+            </button>
+        </div>
+
+
     );
 };
 

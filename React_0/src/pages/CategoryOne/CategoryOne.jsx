@@ -2,14 +2,19 @@ import CategoriesOne from "../../modules/CategoriesOne/CategoriesOne";
 
 
 import Container from "../../modules/layouts/Container/Container";
-import SectionTitle from "../../shared/components/SectionTitle/SectionTitle";
+import Breadcrumbs from "../../shared/components/Breadcrumbs/Breadcrumbs";
+// import SectionTitle from "../../shared/components/SectionTitle/SectionTitle";
+
+import { useParams } from "react-router-dom";
 
 
 const CategoryOne = () => {
+    const { category } = useParams();
+
     return (
         <Container>
-
-            <CategoriesOne />
+            
+            <CategoriesOne categoryId={category}/>
 
         </Container>
     );

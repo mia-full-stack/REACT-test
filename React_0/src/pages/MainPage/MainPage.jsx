@@ -3,6 +3,7 @@ import Container from "../../modules/layouts/Container/Container";
 
 
 import Hero from "../../modules/Hero/Hero";
+import LinkMain from "../../shared/components/LinkMain/LinkMain";
 import SectionTitle from "../../shared/components/SectionTitle/SectionTitle";
 // import ProductCard from "../../shared/components/ProductCard/ProductCard";
 import DiscountBanner from "../../modules/DiscountBanner/DiscountBanner";
@@ -16,10 +17,11 @@ const MainPage = () => {
         <>
             <Container>
                 <Hero />
-                {/* <SectionTitle title="Главная страница"></SectionTitle> */}
-                {/* <Categories /> */}
+                <LinkMain to="/categories" text="All Categories" title="Categories" />
+
                 <Categories limit={4} />
                 <DiscountBanner />
+                <LinkMain to="/sales" text="All sale" title="Sale" />
                 <SaleSection limit={4}/>
 
             </Container>

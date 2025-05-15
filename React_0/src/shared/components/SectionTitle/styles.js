@@ -6,8 +6,9 @@ export const sectionTitleWrapperStyle = css`
 `;
 
 export const sectionTitleHeadingStyle = css`
-    font-size: 36px;
+    font-size: 64px;
     font-weight: 700;
-    color: #000;
+    line-height: 1.1;
+    color: #282828;
     margin-bottom: 37px;
 `;

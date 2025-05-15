@@ -13,19 +13,20 @@ import {
     productCardTitleStyle,
     productCardActionsStyle,
     productCardPriceStyle,
-    productCardActions
+    productCardActions,
+    productLinkStyle
 } from "./styles";
 
-const ProductCard = ({ id, image, title, price,onAddProductToCart }) => {
+const ProductCard = ({ id, image, title, price, onAddProductToCart }) => {
 
     return (
 
-        <Link to={`/products/${id}`}>
+        <Link to={`/products/${id}`} css={productLinkStyle}>
         <div css={productCardWrapperStyle}>
             <div css={productCardImageWrapperStyle} >
                 <img css={productCardImageStyle} src={image} alt={title} />
             </div>
-            <p css={productCardTitleStyle}>{title}Dry & Wet Food</p>
+            <p css={productCardTitleStyle}>{title}</p>
             <div css={productCardActionsStyle}>
             </div>
             <div css={productCardActionsStyle}>

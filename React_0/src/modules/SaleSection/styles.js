@@ -7,5 +7,7 @@ export const popularProductsStyle = css`
 export const productListStyle = css`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
+    gap: 30px;
+    margin-top: -100px;
+    margin-bottom: -140px;
 `;

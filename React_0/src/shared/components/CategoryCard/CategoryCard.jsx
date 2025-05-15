@@ -6,12 +6,13 @@ import {
     productCardImageWrapperStyle,
     productCardImageStyle,
     productCardTitleStyle,
+    productLinkStyle
 } from "./styles";
 
 
-const CategoryCard = ({ image, title }) => {
+const CategoryCard = ({ image, title, id }) => {
     return (
-        <Link to={`/categories/${title}`}>
+        <Link to={`/categories/${id}`} css={productLinkStyle}>
 
             <div css={productCardWrapperStyle}>
                 <div css={productCardImageWrapperStyle}>

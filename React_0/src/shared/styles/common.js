@@ -8,6 +8,7 @@ const commonStyles = css`
     body {
         font-family: "Montserrat", sans-serif;
         color: #282828;
+
     }
 `;
 

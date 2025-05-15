@@ -1,13 +1,15 @@
 /** @jsxImportSource @emotion/react */
+import { useCallback } from "react";
+import { useDispatch } from "react-redux";
 
 import Container from "../../modules/layouts/Container/Container";
-import SectionTitle from "../../shared/components/SectionTitle/SectionTitle";
 import Loader from "../../shared/components/Loader/Loader";
 import LoadingError from "../../shared/components/LoadingError/LoadingError";
 
 import SaleCard from "../../shared/components/SaleCard/SaleCard";
 
 import useFetch from "../../shared/hooks/useFetch";
+import { addToCart } from "../../redux/cart/cart-slice";
 
 import { getSaleProductsApi } from "../../shared/api/sale-api";
 
@@ -24,17 +26,25 @@ const AllSale = ({ limit }) => {
     // Ограничиваем количество категорий, если передан limit
     const displayedSale = limit ? productsSale.slice(0, limit) : productsSale;
 
+    const dispatch = useDispatch();
+
+    const onAddProductToCart = useCallback(
+        (payload) => {
+            dispatch(addToCart(payload));
+        },
+        [dispatch]
+    );
 
     const elements = displayedSale?.map((item) => (
-        <SaleCard key={item.id} {...item} />
+        <SaleCard
+            onAddProductToCart={onAddProductToCart}
+            key={item.id} {...item} />
     ));
 
     return (
-        <div css={popularProductsStyle}>
 
-            <Container>
-                <SectionTitle title="All sale"></SectionTitle>
-
+        <Container>
+            <div css={popularProductsStyle}>
                 <Loader loading={loading} />
                 {error && <LoadingError>{error}</LoadingError>}
                 {/* {Boolean(products.length) && (
@@ -44,9 +54,9 @@ const AllSale = ({ limit }) => {
                 {Array.isArray(products) && products.length > 0 && (
                     <div css={productListStyle}>{elements}</div>
                 )}
+            </div>
+        </Container>
 
-            </Container>
-        </div>
     );
 }
 export default AllSale;

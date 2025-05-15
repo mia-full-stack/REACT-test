@@ -1,0 +1,48 @@
+.filtersBox {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.filter {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+}
+
+.filterTitle {
+    font-size: var(--h3-font-size);
+    line-height: 130%;
+    font-weight: 600;
+    color: var(--main-text-color);
+}
+
+.filter input[type="text"] {
+    border: 1px solid var(--grey-divider);
+    border-radius: 6px;
+    padding: 8px 16px;
+    width: 100px;
+    font-size: var(--h5-font-size);
+    line-height: 126%;
+    font-weight: 500;
+    color: var(--light-grey-text);
+}
+
+@media (max-width:1000px) {
+    .filtersBox {
+        gap: 20px;
+    }
+    .filterTitle {
+        font-size: var(--h4-font-size);
+    }
+}
+
+@media (max-width:350px) {
+    .filter input[type="text"] {
+        width: 100px;
+    }
+}

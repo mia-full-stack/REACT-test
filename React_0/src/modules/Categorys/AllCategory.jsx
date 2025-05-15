@@ -4,7 +4,7 @@
 // import { Link } from "react-router-dom";
 
 import Container from "../layouts/Container/Container";
-import SectionTitle from "../../shared/components/SectionTitle/SectionTitle";
+// import SectionTitle from "../../shared/components/SectionTitle/SectionTitle";
 import Loader from "../../shared/components/Loader/Loader";
 import LoadingError from "../../shared/components/LoadingError/LoadingError";
 
@@ -18,7 +18,7 @@ import useFetch from "../../shared/hooks/useFetch";
 // import { getCategoriesAllApi } from "../../shared/api/category-api";
 import { getCategoriesAll } from "../../shared/api/category-api";
 
-import { popularProductsStyle, productListStyle, viewAllButtonStyle } from "./styles";
+import { popularProductsStyle, productListStyle } from "./styles";
 
 const Categories = ({ limit }) => {
 
@@ -42,7 +42,7 @@ const Categories = ({ limit }) => {
 
             <Container>
 
-                <SectionTitle title="All category"></SectionTitle>
+                {/* <SectionTitle title="Categories"></SectionTitle> */}
                 <Loader loading={loading} />
                 {error && <LoadingError>{error}</LoadingError>}
                 {/* {Boolean(displayedCategories.length) && (
@@ -61,11 +61,11 @@ const Categories = ({ limit }) => {
                         )} */}
 
 
-                        {limit && categories.length > limit && (
+                        {/* {limit && categories.length > limit && (
                             <a href="/categories" css={viewAllButtonStyle}>
                             Смотреть все категории
                         </a>
-                        )}
+                        )} */}
 
 
                     </>

@@ -1,13 +1,18 @@
 import { css } from "@emotion/react";
 
 export const popularProductsStyle = css`
-    margin-bottom: 50px;
+    // margin-bottom: 50px;
 `;
 
 export const productListStyle = css`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
+    margin-left: -50px;
+    margin-right: -50px;
+    margin-top: -100px;
+    margin-bottom: -90px;
+    
 `;
 
 export const viewAllButtonStyle = css`

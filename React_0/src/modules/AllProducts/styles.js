@@ -1,11 +1,14 @@
 import { css } from "@emotion/react";
 
 export const popularProductsStyle = css`
-    margin-bottom: 50px;
+    margin-top: -150px;
+    display: grid;
 `;
 
 export const productListStyle = css`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
+    gap: 30px;
+    margin-bottom: -100px;
+
 `;

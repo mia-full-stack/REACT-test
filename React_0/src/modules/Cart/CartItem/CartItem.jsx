@@ -1,28 +1,72 @@
-import { memo } from "react";
 import { Link } from "react-router-dom";
+import { useCallback } from "react";
+import { useDispatch } from "react-redux";
 
-import Divider from "@mui/material/Divider";
+import { deleteFromCart, increaseCount, decreaseCountInCart } from "../../../redux/cart/cart-slice";
+import Counter from "../../ProductOne/Counter/Counter";
+import ClearBtn from '/clearBtn.png'
+import backendInstance from "../../../shared/api/backendInstance"
 
-import { addToCart } from "../../../redux/cart/cart-slice";
+import styles from './CartItem.module.css'
 
-import {boxCartStyle} from "./styles";
+const CartItem = ({ ...item }) => {
+    const { id, image, title, price, discont_price, count } = item;
+    const totalItemDiscontPrice = discont_price * count;
+    const totalItemPrice = price * count;
 
-const CartItem = ({ id, image, title, price, discont_price }) => {
+    const dispatch = useDispatch();
 
+    const onDeleteFromCart = useCallback((id) => {
+        dispatch(deleteFromCart(id));
+    }, [dispatch]);
+
+    const onIncreaseCart = useCallback((id) => {
+        dispatch(increaseCount({ id }));
+    }, [dispatch]);
+
+    const onDecreaseCart = useCallback((id) => {
+        dispatch(decreaseCountInCart(id));
+    }, [dispatch]);
+
+    const baseURL = backendInstance.defaults.baseURL;
 
     return (
-        <div css={boxCartStyle}>
-            <Link to={`/product/${id}`}>
-                <img src={image} alt={title} />
+        <li className={styles.cartItem} key={id}>
+            <Link to={`/products/${id}`}>
+                <img className={styles.cartItemImage} src={`${baseURL}/${image}`} alt={title} />
             </Link>
-            <p>{title}</p>
-            <div>
-                <span>{price} €</span>
-                {discont_price && <span>{discont_price} €</span>}
+
+            <div className={styles.cartDescription}>
+                <Link to={`/products/${id}`}>
+                    <h4 className={styles.h4}>{title}</h4>
+                </Link>
+
+                <div className={styles.itemBox}>
+                    <Counter
+                        plus={() => onIncreaseCart(id)}
+                        minus={() => onDecreaseCart(id)}
+                        count={count}
+                    />
+
+                    <div className={styles.cartItemPrice}>
+                        {discont_price ?
+                            <>
+                                <p className={styles.discont_price}>${totalItemDiscontPrice}</p>
+                                <p className={styles.price} style={{ textDecoration: "line-through" }}>${totalItemPrice}</p>
+                            </>
+                            :
+                            <p className={styles.discont_price}>${totalItemPrice}</p>
+                        }
+                    </div>
+                </div>
             </div>
-            <button onClick={() => addToCart(id)}>Add to Cart</button>
-            <Divider  />
-        </div>
-    );
-}
-export default memo(CartItem);
+            <div style={{width: "30px"}}></div>
+
+            <button className={styles.cartItemBtn} onClick={() => onDeleteFromCart(id)}>
+                <img src={ClearBtn} alt="Remove Item" /></button>
+        </li>
+
+    )
+};
+
+export default CartItem;

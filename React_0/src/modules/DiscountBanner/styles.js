@@ -9,7 +9,8 @@ export const discountContainer = css`
     padding: 20px;
     border-radius: 8px;
     margin: 0 auto;
-    margin-bottom: 50px;
+    margin-top: 50px;
+    // margin-bottom: 50px;
 `
 
   /* Стиль для заголовка */
